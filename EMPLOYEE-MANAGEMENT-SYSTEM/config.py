@@ -9,10 +9,11 @@ class Config:
     # Database configuration
     
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'mysql+pymysql://root:/.,mnbvcxz7410@localhost:3306/codevocado_db'
+        'mysql+pymysql://root:your_password@localhost:3306/codevocado_db'
     
     # Disable SQLAlchemy modification tracking
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Enable set to False in production
+
     SQLALCHEMY_ECHO = True
