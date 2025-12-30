@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Add Employee - Employee Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-person-plus me-2"></i>Add New Employee
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('create') }}" novalidate>
+                    <div class="row">
+                        <!-- Name -->
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">
+                                Full Name <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="name" 
+                                       name="name" 
+                                       placeholder="John Doe"
+                                       required>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">
+                                Email Address <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input type="email" 
+                                       class="form-control" 
+                                       id="email" 
+                                       name="email" 
+                                       placeholder="john.doe@example.com"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Department -->
+                        <div class="col-md-6 mb-3">
+                            <label for="department" class="form-label">
+                                Department <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-building"></i>
+                                </span>
+                                <select class="form-select" id="department" name="department" required>
+                                    <option value="">Select Department</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Human Resources">Human Resources</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Customer Support">Customer Support</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Position -->
+                        <div class="col-md-6 mb-3">
+                            <label for="position" class="form-label">
+                                Position <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-briefcase"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="position" 
+                                       name="position" 
+                                       placeholder="Senior Developer"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Salary -->
+                        <div class="col-md-6 mb-3">
+                            <label for="salary" class="form-label">
+                                Annual Salary <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-currency-dollar"></i>
+                                </span>
+                                <input type="number" 
+                                       class="form-control" 
+                                       id="salary" 
+                                       name="salary" 
+                                       placeholder="75000.00"
+                                       step="0.01"
+                                       min="0"
+                                       required>
+                            </div>
+                        </div>
+
+                        <!-- Hire Date -->
+                        <div class="col-md-6 mb-3">
+                            <label for="hire_date" class="form-label">
+                                Hire Date <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-calendar"></i>
+                                </span>
+                                <input type="date" 
+                                       class="form-control" 
+                                       id="hire_date" 
+                                       name="hire_date" 
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left me-1"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-circle me-1"></i>Create Employee
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Help Card -->
+        <div class="card mt-3 border-info">
+            <div class="card-body">
+                <h6 class="card-title">
+                    <i class="bi bi-info-circle text-info me-2"></i>Tips
+                </h6>
+                <ul class="mb-0 small text-muted">
+                    <li>All fields marked with <span class="text-danger">*</span> are required</li>
+                    <li>Email addresses must be unique</li>
+                    <li>Salary should be entered as annual amount</li>
+                    <li>Use the format YYYY-MM-DD for dates</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

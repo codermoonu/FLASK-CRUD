@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Employee - Employee Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0">
+                    <i class="bi bi-pencil-square me-2"></i>Edit Employee
+                </h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('edit', id=employee.id) }}" novalidate>
+                    <div class="row">
+                        <!-- Name -->
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">
+                                Full Name <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="name" 
+                                       name="name" 
+                                       value="{{ employee.name }}"
+                                       required>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">
+                                Email Address <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input type="email" 
+                                       class="form-control" 
+                                       id="email" 
+                                       name="email" 
+                                       value="{{ employee.email }}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Department -->
+                        <div class="col-md-6 mb-3">
+                            <label for="department" class="form-label">
+                                Department <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-building"></i>
+                                </span>
+                                <select class="form-select" id="department" name="department" required>
+                                    <option value="">Select Department</option>
+                                    <option value="Engineering" {% if employee.department == 'Engineering' %}selected{% endif %}>Engineering</option>
+                                    <option value="Marketing" {% if employee.department == 'Marketing' %}selected{% endif %}>Marketing</option>
+                                    <option value="Sales" {% if employee.department == 'Sales' %}selected{% endif %}>Sales</option>
+                                    <option value="Human Resources" {% if employee.department == 'Human Resources' %}selected{% endif %}>Human Resources</option>
+                                    <option value="Finance" {% if employee.department == 'Finance' %}selected{% endif %}>Finance</option>
+                                    <option value="Operations" {% if employee.department == 'Operations' %}selected{% endif %}>Operations</option>
+                                    <option value="Customer Support" {% if employee.department == 'Customer Support' %}selected{% endif %}>Customer Support</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Position -->
+                        <div class="col-md-6 mb-3">
+                            <label for="position" class="form-label">
+                                Position <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-briefcase"></i>
+                                </span>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="position" 
+                                       name="position" 
+                                       value="{{ employee.position }}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Salary -->
+                        <div class="col-md-6 mb-3">
+                            <label for="salary" class="form-label">
+                                Annual Salary <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-currency-dollar"></i>
+                                </span>
+                                <input type="number" 
+                                       class="form-control" 
+                                       id="salary" 
+                                       name="salary" 
+                                       value="{{ employee.salary }}"
+                                       step="0.01"
+                                       min="0"
+                                       required>
+                            </div>
+                        </div>
+
+                        <!-- Hire Date -->
+                        <div class="col-md-6 mb-3">
+                            <label for="hire_date" class="form-label">
+                                Hire Date <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-calendar"></i>
+                                </span>
+                                <input type="date" 
+                                       class="form-control" 
+                                       id="hire_date" 
+                                       name="hire_date" 
+                                       value="{{ employee.hire_date.strftime('%Y-%m-%d') }}"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metadata Display -->
+                    <div class="alert alert-light border" role="alert">
+                        <small class="text-muted">
+                            <strong>Created:</strong> {{ employee.created_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                            {% if employee.updated_at %}
+                            | <strong>Last Updated:</strong> {{ employee.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                            {% endif %}
+                        </small>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left me-1"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-warning">
+                            <i class="bi bi-check-circle me-1"></i>Update Employee
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
