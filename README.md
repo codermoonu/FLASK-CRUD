@@ -358,6 +358,8 @@ For issues or questions:
 
 Built with ❤️ as a demonstration of Flask CRUD operations with MySQL.
 
---- photos
-- [ ] REST API endpoints
-- [ ] Unit and integration tests
+--- 
+## Photos
+<img width="1919" height="1079" alt="Screenshot 2025-12-31 023838" src="https://github.com/user-attachments/assets/cc815719-5e6d-4e0c-9546-10db0dd678ef" />
+<img width="1920" height="1080" alt="Screenshot 2025-12-31 023954" src="https://github.com/user-attachments/assets/6756882d-3ebd-4801-9f68-dcc78f6a4098" />
+
